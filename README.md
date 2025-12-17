@@ -49,32 +49,29 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-Running the App
+**Running the App**
 
 Launch the Streamlit app:
 
+```bash
 streamlit run rice_disease_app/app.py
+```
 
+Open the link shown in the terminal (usually)
+```bash
+http://localhost:8501.
+```
 
-Open the link shown in the terminal (usually http://localhost:8501).
+**Login with default credentials:**
 
-Login with default credentials:
-
-Username: admin
-
-Password: 1234
+Username: 
+```bash
+admin
+```
+Password: 
+```bash
+1234
+```
 
 Upload a rice leaf image and click Predict Disease.
 
-Folder Structure
-Issue_in_leaf/
-│
-├─ rice_disease_app/
-│   ├─ app.py                  # Streamlit application
-│   ├─ model/
-│   │   └─ rice_cnn.keras      # Trained CNN model
-│
-├─ train_model.py              # Script to train the CNN model
-├─ dataset/                    # Folder containing training images
-├─ requirements.txt            # Python dependencies
-└─ README.md

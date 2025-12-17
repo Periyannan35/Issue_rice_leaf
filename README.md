@@ -30,5 +30,5 @@ A **web-based application** to detect diseases in rice leaves using **Convolutio
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/<your-username>/Issue_in_leaf.git
+git clone https://github.com/Periyannan35/Issue_in_leaf.git
 cd Issue_in_leaf

@@ -1,89 +1,112 @@
-# Issue_rice_leaf
+🧩 Software Design Principles (SOLID)
 
-A **web-based application** to detect diseases in rice leaves using **Convolutional Neural Networks (CNN)**. Users can upload an image of a rice leaf and get predictions for the type of disease along with confidence scores.
+This project is designed following SOLID principles to ensure scalability, maintainability, and clean architecture.
 
----
+1️⃣ Single Responsibility Principle (SRP)
 
-## Features
+Definition:
+A class or module should have only one reason to change, meaning it should handle one specific responsibility.
 
-- **Login system:** Simple authentication for users.
-- **Image upload:** Upload rice leaf images (`jpg`, `jpeg`, `png`).
-- **Disease prediction:** Detects the following classes:
-  - Bacterial Leaf Blight
-  - Brown Spot
-  - Leaf Smut
-  - Healthy
-- **Confidence score:** Shows the model's prediction confidence.
-- **Web app interface:** Built using **Streamlit** for easy access.
+Usage in this Project:
+Each component has a single, well-defined role.
 
----
-## Screenshots
+Module	Responsibility
+app.py	Handles Streamlit UI, user interaction, and workflow
+src/model_loader.py	Responsible only for loading the trained CNN model
+src/image_preprocessor.py	Handles image resizing and normalization
+config/class_names.json	Stores disease class labels
+models/rice_cnn.keras	Contains trained CNN weights
 
-**Login Page**  
-![Login](Login.png)
+✔ This separation makes the system easier to debug and extend.
 
-**Upload Page**  
-![Upload](Upload.png)
+2️⃣ Open–Closed Principle (OCP)
 
-**Prediction Result**  
-![Prediction](Prediction.png)
+Definition:
+Software entities should be open for extension but closed for modification.
 
----
+Usage in this Project:
 
-## Dataset
+New diseases can be added without modifying application logic
 
-- The CNN model is trained on a **custom dataset** of rice leaf images collected from public resources.
-- Dataset includes 4 classes: Bacterial Leaf Blight, Brown Spot, Leaf Smut, and Healthy leaves.
+Only class_names.json and retrained model need updates
 
----
+UI and prediction code remain unchanged
 
-## Installation
+Example:
 
-1. **Clone the repository**
+{
+  "0": "Bacterial Leaf Blight",
+  "1": "Brown Spot",
+  "2": "Leaf Smut",
+  "3": "Healthy"
+}
 
-```bash
-git clone https://github.com/Periyannan35/Issue_in_leaf.git
-cd Issue_in_leaf
-```
-2. **Create a virtual environment (recommended)**
 
-```bash
-python -m venv venv
-# Activate the environment
-# Windows:
-venv\Scripts\activate
-# Linux/Mac:
-source venv/bin/activate
-```
-3. **Install dependencies**
+✔ The system supports future extensions without rewriting core code.
 
-```bash
-pip install -r requirements.txt
-```
+3️⃣ Liskov Substitution Principle (LSP)
 
-**Running the App**
+Definition:
+Objects of a superclass should be replaceable with objects of its subclasses without affecting correctness.
 
-Launch the Streamlit app:
+Usage in this Project:
 
-```bash
-streamlit run rice_disease_app/app.py
-```
+The CNN model can be replaced with another architecture (e.g., MobileNet, ResNet)
 
-Open the link shown in the terminal (usually)
-```bash
-http://localhost:8501.
-```
+As long as input shape and output format remain consistent, the app works seamlessly
 
-**Login with default credentials:**
+✔ Model substitution does not break prediction flow.
 
-Username: 
-```bash
-admin
-```
-Password: 
-```bash
-1234
-```
+4️⃣ Interface Segregation Principle (ISP)
 
-Upload a rice leaf image and click Predict Disease.
+Definition:
+Clients should not be forced to depend on interfaces they do not use.
 
+Usage in this Project:
+
+UI logic is not mixed with training logic
+
+Model loading, preprocessing, and prediction are isolated
+
+Streamlit interface interacts only with required prediction functions
+
+✔ Keeps code lightweight and avoids unnecessary dependencies.
+
+5️⃣ Dependency Inversion Principle (DIP)
+
+Definition:
+High-level modules should not depend on low-level modules. Both should depend on abstractions.
+
+Usage in this Project:
+
+app.py does not hardcode model or class details
+
+Model path and class names are loaded from configuration files
+
+Changing model file or labels requires no UI code change
+
+✔ Improves flexibility and maintainability.
+
+🏗 Project Architecture Overview
+├── app.py                  # Main Streamlit application
+├── requirements.txt        # Dependencies
+├── models/                 # Trained CNN models
+├── src/                    # Modular source logic
+├── config/                 # Configurable parameters
+├── data/                   # Dataset (local use)
+├── screenshots/            # UI screenshots
+└── tests/                  # Testing modules
+
+✅ Conclusion
+
+By following SOLID principles, this project achieves:
+
+Clean separation of concerns
+
+Easy scalability for new diseases
+
+Robust and maintainable architecture
+
+Industry-standard coding practices
+
+This design aligns with professional software engineering standards used in real-world AI applications.

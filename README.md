@@ -17,6 +17,18 @@ A **web-based application** to detect diseases in rice leaves using **Convolutio
 - **Web app interface:** Built using **Streamlit** for easy access.
 
 ---
+## Screenshots
+
+**Login Page**  
+![Login](Login.png)
+
+**Upload Page**  
+![Upload](Upload.png)
+
+**Prediction Result**  
+![Prediction](Prediction.png)
+
+---
 
 ## Dataset
 

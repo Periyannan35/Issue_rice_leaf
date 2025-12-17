@@ -19,6 +19,7 @@ The project is developed as part of the **Infosys Internship Program (Nov Batch 
 ---
 
 ## 🏗 Project Structure
+```
 ├── app.py # Main Streamlit application
 ├── requirements.txt # Python dependencies
 ├── README.md # Project documentation
@@ -44,6 +45,7 @@ The project is developed as part of the **Infosys Internship Program (Nov Batch 
 │
 └── tests/ # Test modules
 └── init.py
+```
 
 ---
 
